@@ -5,6 +5,8 @@ class TweetLibs
   attr_accessor :genre
 
   def initialize(view, model)
+    # If you work with class methods in the view and the model
+    # (`def self.method`) you don't need to define them in this method.
     @view = view
     @model = model
     @user_1_tweets = []
@@ -13,6 +15,7 @@ class TweetLibs
 
   def menu
     selection = @view.menu
+    # Why not just @view.menu.to_i ???
     case selection.to_i
     when 1
       start_game
@@ -24,6 +27,7 @@ class TweetLibs
   end
 
   def start_game
+    # I like the extraction of procedural code here.
     select_genre
     select_twitter_users
     select_tweets
