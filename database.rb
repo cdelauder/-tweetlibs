@@ -51,5 +51,6 @@ end
 
 test = Storybook.new
 
+test.create_db_table
 test.read_in_story_file('romance.txt')
 test.add_storys_to_table
