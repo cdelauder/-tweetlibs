@@ -1,12 +1,19 @@
 require 'sqlite3'
 require 'twitter'
 
+# I think that you have several models in your system and they are all in this
+# class. Story, Tweet, and User all seem like good candidates for models, but
+# StoryTemplate is the only model which appears to have a database backing.
+
 class Model
 
   def initialize
     @user_1_tweets = []
     @user_2_tweets = []
     @tweetlibs_database = SQLite3::Database.new "tweetlibs-database.db"
+    # I think that you have a missing object in your system which is
+    # responsible for talking with your API, and contains this code (which is
+    # duplicated from the api.rb file). Something like TwitterAPI
     @client = Twitter::REST::Client.new do |config|
       config.consumer_key        = "V9fa9p8YxOPtjE9YTcxjYztlr"
       config.consumer_secret     = "g9Ee6hJe094DowCyD4Oyecui39a6Nynt31uzKDXK4uOgl9vFML"
@@ -16,6 +23,8 @@ class Model
   end
 
   def get_tweets(twittername, num_of_tweets)
+    # This code is duplicated across your API and model code. Decide where the
+    # code lives and put it there.
     strings = []
     tweets = @client.user_timeline(twittername)
     raise ArgumentError, 'Please input Twitter handle with at least 10 tweets.' unless tweets.length >= 10
@@ -33,6 +42,7 @@ class Model
 
 
   def select_genre(genre)
+    # This menu case statement logic would fit better in the controller.
     case genre.to_i
     when 1
       @genre = 'Science Fiction'
@@ -49,6 +59,8 @@ class Model
   end
 
   def sample_tweets_user_2
+    # This duplicates the method above it. Could you make the method take or be
+    # called an object and then work off of the object in question.
     @user_2_tweets.pop(3)
   end
 
