@@ -1,4 +1,17 @@
 class View
+  # right now this is a pretty small class, but if your app grows a lot of this
+  # repetition will get heinous. I think in particular the numbered menu could
+  # be extracted and stored in some sort of data structure. Most prompts have a
+  # few common components:
+  #
+  #   - clearing the screen
+  #   - displaying a message
+  #   - presenting options
+  #   - getting a selection from the user
+  #
+  # If you were to make a generic method which took a string for a message, and
+  # a collection (an array or hash) for the options you could reduce the amount
+  # of repetition here and make the system more flexible.
   def menu
     puts "Welcome to Tweetlibs, the best thing you will ever do in bash!"
     puts "Please type a number to continue"
