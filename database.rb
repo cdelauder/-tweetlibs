@@ -2,9 +2,6 @@ require 'sqlite3'
 require 'debugger'
 require 'time'
 
-#updated at not functioning yet
-
-#DATABASE_NAME = 'tweetlibs-database'
 $tweetlibs_database = SQLite3::Database.new "tweetlibs-database.db"
 
 class Storybook
@@ -15,7 +12,7 @@ class Storybook
     @story = ''
   end
 
-  def read_in_story_file(file_path) #file_path should be a string
+  def read_in_story_file(file_path)
     file = File.new(file_path)
     story_array = file.readlines
     p @title = story_array[0].chomp
@@ -53,15 +50,6 @@ class Storybook
 end
 
 test = Storybook.new
-#test.create_db_table
-# test.read_in_story_file('horror_story.txt')
-# test.add_storys_to_table
-# test.read_in_story_file('spaceopera1.txt')
-# test.add_storys_to_table
+
 test.read_in_story_file('romance.txt')
 test.add_storys_to_table
-
-
-
-
-

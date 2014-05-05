@@ -1,13 +1,9 @@
-#require_relative 'api'
 require 'sqlite3'
-
 require 'twitter'
-
 
 class Model
 
-  def initialize#(storybook = Storybook.new)
-    #instantiate database
+  def initialize
     @user_1_tweets = []
     @user_2_tweets = []
     @tweetlibs_database = SQLite3::Database.new "tweetlibs-database.db"
@@ -67,12 +63,6 @@ class Model
   end
 
   def build_story(user_1_tweets, user_2_tweets)
-    #refactor to reduce dependency --- DONE
-    # @storybook.read_in_story_file('spaceopera1.txt')
-    # @storybook.create_db_table
-    # @storybook.add_storys_to_table
-    # story = @storybook.return_story[0][0]
-    #story = get_story_from_database[0][0]
     @story = get_story_from_database[0][0]
     user1_replace = { user1_1: "#{user_1_tweets[0]}", user1_2: "#{user_1_tweets[1]}", user1_3: "#{user_1_tweets[2]}" }
     user2_replace = { user2_1: "#{user_2_tweets[0]}", user2_2: "#{user_2_tweets[1]}", user2_3: "#{user_2_tweets[2]}" }
@@ -88,10 +78,6 @@ class Model
   end
 
   def get_story_from_database
-
     @tweetlibs_database.execute("SELECT story FROM story_templates WHERE genre = '#{@genre}';")
-    #@tweetlibs_database.execute("SELECT story FROM story_templates WHERE id=3;")
   end
-
-
 end

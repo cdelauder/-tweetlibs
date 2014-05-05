@@ -7,9 +7,6 @@ require 'twitter'
   config.access_token_secret = "kLccAab1THvQPHVIH2lzhOUPv7XfQTHnEqtQVirQlt1s7"
 end
 
-p @client.class
-
-
 def get_tweets(twittername, num_of_tweets)
   strings = []
   tweets = @client.user_timeline(twittername)
@@ -25,5 +22,3 @@ def get_tweets(twittername, num_of_tweets)
 
   strings
 end
-
-#p get_tweets('katyperry',9)

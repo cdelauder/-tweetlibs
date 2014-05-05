@@ -1,7 +1,4 @@
-
-
 class View
-
   def menu
     puts "Welcome to Tweetlibs, the best thing you will ever do in bash!"
     puts "Please type a number to continue"
