@@ -1,6 +1,9 @@
 require 'twitter'
 
 @client = Twitter::REST::Client.new do |config|
+  # Instead of leaving API keys in your code, you can consume them from an
+  # ignored file. See Dotenv
+  # https://github.com/bkeepers/dotenv
   config.consumer_key        = "V9fa9p8YxOPtjE9YTcxjYztlr"
   config.consumer_secret     = "g9Ee6hJe094DowCyD4Oyecui39a6Nynt31uzKDXK4uOgl9vFML"
   config.access_token        = "171597575-KikuQ7884uFrBP9GLmh8ejrdDEfnGsTA9aOlJvQb"
@@ -8,6 +11,10 @@ require 'twitter'
 end
 
 def get_tweets(twittername, num_of_tweets)
+  # This method could be broken up, decomposed into several smaller methods.
+  #
+  # Use map instead of each to return a new array of sanitized tweets.
+
   strings = []
   tweets = @client.user_timeline(twittername)
   raise ArgumentError, 'Please input Twitter handle with at least 10 tweets.' unless tweets.length >= 10
