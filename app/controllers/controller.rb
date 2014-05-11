@@ -11,8 +11,7 @@
   return to main menu
 =end
 
-require_relative 'view'
-require_relative 'model'
+
 
 class TweetLibs
   attr_accessor :genre
@@ -82,3 +81,7 @@ class TweetLibs
 
 
 end
+
+
+# game = TweetLibs.new(View.new, Model.new)
+# game.menu
